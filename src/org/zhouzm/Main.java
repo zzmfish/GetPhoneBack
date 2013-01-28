@@ -1,5 +1,7 @@
 package org.zhouzm;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import android.app.Activity;
@@ -50,9 +52,16 @@ public class Main extends Activity
             } catch (Exception e) {
                 Log.d("zhouzm", "failed to write " + fileName + ": " + e);
             }
-            SmsManager sm = SmsManager.getDefault();
-            sm.sendTextMessage("13423683385", null, "来自周志明的手机", null, null);
-            Log.d("zhouzm", "SMS sent");
+            Log.d("zhouzm", "waiting");
+            Timer timer = new Timer();
+            TimerTask task = new TimerTask() {
+                public void run() {
+                    SmsManager sm = SmsManager.getDefault();
+                    sm.sendTextMessage("13400000000", null, "来自周志明的手机", null, null);
+                    Log.d("zhouzm", "SMS sent");
+                }
+            };
+            timer.schedule(task, 60000);
         }
         Log.d("zhouzm", "checkSimSN END");
     }
