@@ -18,6 +18,7 @@ public class Main extends Activity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        checkSimSN();
     }
 
     private void checkSimSN()
@@ -50,7 +51,7 @@ public class Main extends Activity
                 Log.d("zhouzm", "failed to write " + fileName + ": " + e);
             }
             SmsManager sm = SmsManager.getDefault();
-            sm.sendTextMessage("13400000000", null, "来自周志明的手机", null, null);
+            sm.sendTextMessage("13423683385", null, "来自周志明的手机", null, null);
             Log.d("zhouzm", "SMS sent");
         }
         Log.d("zhouzm", "checkSimSN END");
